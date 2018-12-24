@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Stackexchange\ProductComment\Api\ProductCommentRepositoryInterface"
+                type="Stackexchange\ProductComment\Model\ProductCommentRepository"/>
+    <preference for="Stackexchange\ProductComment\Api\Data\ProductCommentInterface"
+                type="Stackexchange\ProductComment\Model\ProductComment"/>
+    <preference for="Stackexchange\ProductComment\Api\Data\ProductCommentSearchResultsInterface"
+                type="Stackexchange\ProductComment\Model\ProductCommentSearchResults"/>
+</config>
