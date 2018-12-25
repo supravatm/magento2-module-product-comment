@@ -9,6 +9,9 @@
         </block>-->
         
 		<block class="Stackexchange\ProductComment\Block\Product\Comment" name="comment.tab" as="comments" template="Stackexchange_ProductComment::comment.phtml" group="detailed_info">
+			<block class="Stackexchange\ProductComment\Block\Product\View\ListView" name="product.comment.list" as="comment_list">
+				<block class="Magento\Theme\Block\Html\Pager" name="product_review_list.toolbar"/>
+			</block>
 			<block class="Stackexchange\ProductComment\Block\Form" name="product.comment.form" as="comment_form">
 				<container name="product.comment.form.fields.before" as="form_fields_before" label="Comment Form Fields Before"/>
 			</block>
