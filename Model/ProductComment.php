@@ -7,6 +7,12 @@ use Stackexchange\ProductComment\Api\Data\ProductCommentInterface;
 class ProductComment extends \Magento\Framework\Model\AbstractModel implements
     \Stackexchange\ProductComment\Api\Data\ProductCommentInterface
 {
+
+    /**
+     * Cache tag
+     */
+    const CACHE_TAG = 'comment_block';
+
     protected function _construct()
     {
         $this->_init('Stackexchange\ProductComment\Model\ResourceModel\ProductComment');

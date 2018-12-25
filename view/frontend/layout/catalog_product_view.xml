@@ -2,11 +2,17 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 <body>
     <referenceBlock name="product.info.details">
-        <block class="Magento\Catalog\Block\Product\View" name="product.comment.tab" template="Stackexchange_ProductComment::product/view/comment.phtml" group="detailed_info" >
+        <!--<block class="Magento\Catalog\Block\Product\View" name="product.comment.tab" template="Stackexchange_ProductComment::product/view/comment.phtml" group="detailed_info" >
             <arguments>
                 <argument translate="true" name="title" xsi:type="string">Comments</argument>
             </arguments>
-        </block>
+        </block>-->
+        
+		<block class="Stackexchange\ProductComment\Block\Product\Comment" name="comment.tab" as="comments" template="Stackexchange_ProductComment::comment.phtml" group="detailed_info">
+			<block class="Stackexchange\ProductComment\Block\Form" name="product.comment.form" as="comment_form">
+				<container name="product.comment.form.fields.before" as="form_fields_before" label="Comment Form Fields Before"/>
+			</block>
+		</block>
     </referenceBlock>
 </body>
 </page>
