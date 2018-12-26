@@ -39,26 +39,15 @@ class ListView extends \Stackexchange\ProductComment\Block\Product\View
     {
         parent::_prepareLayout();
 
-//        $toolbar = $this->getLayout()->getBlock('product_review_list.toolbar');
-//        if ($toolbar) {
-//            $toolbar->setCollection($this->getReviewsCollection());
-//            $this->setChild('toolbar', $toolbar);
-//        }
+        $toolbar = $this->getLayout()->getBlock('product_comment_list.toolbar');
+        if ($toolbar) {
+            $toolbar->setCollection($this->getCommentsCollection());
+            $this->setChild('toolbar', $toolbar);
+        }
 
         return $this;
     }
 
-
-    /**
-     * Return review url
-     *
-     * @param int $id
-     * @return string
-     */
-    public function getReviewUrl($id)
-    {
-        return $this->getUrl('*/*/view', ['id' => $id]);
-    }
 
 
     /**

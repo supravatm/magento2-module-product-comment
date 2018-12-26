@@ -1,2 +1,16 @@
 
+<div id="product-commect-container" data-role="product-comment"></div>
+
 <?= $block->getChildHtml() ?>
+
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Stackexchange_ProductComment/js/process-comments": {
+                "productCommentUrl": "<?= $block->escapeJs($block->escapeUrl($block->getproductCommentUrl())) ?>",
+                "commectTabSelector": "#tab-label-comments"
+            }
+        }
+    }
+</script>

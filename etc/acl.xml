@@ -4,9 +4,12 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Stackexchange_ProductComment::main" title="Product Comment API" sortOrder="999">
-                    <resource id="Stackexchange_ProductComment::id" title="Comment Product by id" sortOrder="10"/>
-                    <resource id="Stackexchange_ProductComment::list" title="comment List" sortOrder="20"/>
+                <resource id="Stackexchange_ProductComment::main" title="Product Comment" sortOrder="999">
+                    <resource id="Stackexchange_ProductComment::webservice" title="API" sortOrder="10"/>
+                    <resource id="Stackexchange_ProductComment::comment_all" title="Comment Grid" translate="title" sortOrder="10"/>
+                    <resource id="Stackexchange_ProductComment::save" title="Comment save" translate="title" sortOrder="20"/>
+                    <resource id="Stackexchange_ProductComment::update" title="Comment update" translate="title" sortOrder="20"/>
+                    <resource id="Stackexchange_ProductComment::add" title="Comment add" translate="title" sortOrder="20"/>
                 </resource>
             </resource>
         </resources>

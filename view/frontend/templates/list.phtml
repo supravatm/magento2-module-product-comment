@@ -33,6 +33,7 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
             </ol>
             <div class="toolbar review-toolbar">
                 <?= $block->getChildHtml('toolbar') ?>
+                <?php echo $this->getToolbarHtml(); ?>
             </div>
         </div>
     </div>

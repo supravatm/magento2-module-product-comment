@@ -8,37 +8,37 @@
 
 /** @var \Magento\Review\Block\Form $block */
 ?>
-<div class="block review-add">
+<div class="block comment-add">
     <div class="block-title"><strong><?= $block->escapeHtml(__('Write Your Own Comment')) ?></strong></div>
     <div class="block-content">
 
-        <form action="<?= $block->escapeUrl($block->getAction()) ?>" class="review-form" method="post" id="review-form"
-              data-role="product-review-form" data-bind="scope: 'review-form'">
+        <form action="<?= $block->escapeUrl($block->getAction()) ?>" class="comment-form" method="post" id="comment-form"
+              data-role="product-comment-form" data-bind="scope: 'comment-form'">
             <?= $block->getBlockHtml('formkey') ?>
             <?= $block->getChildHtml('form_fields_before') ?>
-            <fieldset class="fieldset review-fieldset"
+            <fieldset class="fieldset comment-fieldset"
                       data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
-                <legend class="legend review-legend">
+                <legend class="legend comment-legend">
                     <span><?= $block->escapeHtml(__("You're commenting:")) ?></span><strong><?= $block->escapeHtml($block->getProductInfo()->getName()) ?></strong>
                 </legend>
                 <br/>
 
-                <div class="field review-field-nickname required">
-                    <label for="nickname_field"
+                <div class="field comment-field-nickname required">
+                    <label for="email_field"
                            class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
                     <div class="control">
-                        <input type="text" name="email" id="nickname_field" class="input-email"
-                               data-validate="{required:true}" data-bind="value: email()"/>
+                        <input type="text" name="email" id="email_field" class="input-email"
+                               data-validate="{required:true}" />
                     </div>
                 </div>
-                <div class="field review-field-text required">
-                    <label for="review_field" class="label"><span><?= $block->escapeHtml(__('Comment')) ?></span></label>
+                <div class="field comment-field-text required">
+                    <label for="comment_field" class="label"><span><?= $block->escapeHtml(__('Comment')) ?></span></label>
                     <div class="control">
                         <textarea name="comment" id="comment_field" cols="5" rows="3" data-validate="{required:true}"></textarea>
                     </div>
                 </div>
             </fieldset>
-            <div class="actions-toolbar review-form-actions">
+            <div class="actions-toolbar comment-form-actions">
                 <div class="primary actions-primary">
                     <button type="submit" class="action submit primary">
                         <span><?= $block->escapeHtml(__('Submit Comment')) ?></span></button>

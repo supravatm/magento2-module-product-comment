@@ -66,10 +66,10 @@ class Comment extends Template implements IdentityInterface
      *
      * @return string
      */
-    public function getProductReviewUrl()
+    public function getProductCommentUrl()
     {
         return $this->getUrl(
-            'review/product/listAjax',
+            'productcomment/product/listAjax',
             [
                 '_secure' => $this->getRequest()->isSecure(),
                 'id' => $this->getProductId(),

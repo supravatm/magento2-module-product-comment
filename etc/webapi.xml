@@ -4,13 +4,13 @@
     <route method="GET" url="/V1/productcomment/:id">
         <service class="Stackexchange\ProductComment\Api\ProductCommentRepositoryInterface" method="getById"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Stackexchange_ProductComment::webservice"/>
         </resources>
     </route>
     <route method="GET" url="/V1/productcomment">
         <service class="Stackexchange\ProductComment\Api\ProductCommentRepositoryInterface" method="getList"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Stackexchange_ProductComment::webservice"/>
         </resources>
     </route>
 </routes>
