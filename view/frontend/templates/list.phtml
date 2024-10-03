@@ -6,7 +6,7 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
 <?php if (count($_items)):?>
     <div class="block review-list" id="customer-reviews">
         <div class="block-title">
-            <strong><?= $block->escapeHtml(__('Customer Comment')) ?></strong>
+            <strong><?= __('Customer Comments') ?></strong>
         </div>
         <div class="block-content">
             <div class="toolbar review-toolbar">
@@ -15,13 +15,16 @@ $format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
             <ol class="items review-items">
                 <?php foreach ($_items as $_comment):?>
                     <li class="item review-item" itemscope itemprop="review" itemtype="http://schema.org/Review">
+                    <div class="review-title" itemprop="name">
+                            <?= nl2br($block->escapeHtml($_comment->getTitle())) ?>
+                        </div>
                         <div class="review-content" itemprop="description">
-                            <?= nl2br($block->escapeHtml($_comment->getCustomerComment())) ?>
+                            <?= nl2br($block->escapeHtml($_comment->getComment())) ?>
                         </div>
                         <div class="review-details">
                             <p class="review-author">
                                 <span class="review-details-label"><?= $block->escapeHtml(__('Comment by')) ?></span>
-                                <strong class="review-details-value" itemprop="author"><?= $block->escapeHtml($_comment->getCustomerEmail()) ?></strong>
+                                <strong class="review-details-value" itemprop="author"><?= __('Supravat Mondal'); ?></strong>
                             </p>
                             <p class="review-date">
                                 <span class="review-details-label"><?= $block->escapeHtml(__('Posted on')) ?></span>

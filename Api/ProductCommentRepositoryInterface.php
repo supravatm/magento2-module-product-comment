@@ -1,29 +1,29 @@
 <?php
 
-namespace Stackexchange\ProductComment\Api;
+namespace SMG\RestApiProductComment\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Stackexchange\ProductComment\Api\Data\ProductCommentInterface;
+use SMG\RestApiProductComment\Api\Data\ProductCommentInterface;
 
 interface ProductCommentRepositoryInterface
 {
     /**
      * @api
-     * @param \Stackexchange\ProductComment\Api\Data\ProductCommentnterface $comment
-     * @return \Stackexchange\ProductComment\Api\Data\ProductCommentnterface
+     * @param \SMG\RestApiProductComment\Api\Data\ProductCommentInterface $comment
+     * @return \SMG\RestApiProductComment\Api\Data\ProductCommentInterface
      */
     public function save(ProductCommentInterface $comment);
 
     /**
      * @api
-     * @param \Stackexchange\ProductComment\Api\Data\ProductCommentnterface $comment
-     * @return \Stackexchange\ProductComment\Api\Data\ProductCommentSearchResultsInterface
+     * @param \SMG\RestApiProductComment\Api\Data\ProductCommentInterface $comment
+     * @return \SMG\RestApiProductComment\Api\Data\ProductCommentSearchResultsInterface
      */
     public function delete(ProductCommentInterface $comment);
 
     /**
      * @api
-     * @param \Stackexchange\ProductComment\Api\Data\ProductCommentnterface $id
+     * @param \SMG\RestApiProductComment\Api\Data\ProductCommentInterface $id
      * @return void
      */
     public function deleteById($id);
@@ -31,7 +31,7 @@ interface ProductCommentRepositoryInterface
     /**
      * @api
      * @param int $id
-     * @return \Stackexchange\ProductComment\Api\Data\ProductCommentSearchResultsInterface
+     * @return \SMG\RestApiProductComment\Api\Data\ProductCommentInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getById($id);
@@ -39,7 +39,7 @@ interface ProductCommentRepositoryInterface
     /**
      * @api
      * @param \Magento\Framework\Api\SearchCriteriaInterface $criteria
-     * @return \Stackexchange\ProductComment\Api\Data\ProductCommentSearchResultsInterface
+     * @return \SMG\RestApiProductComment\Api\Data\ProductCommentSearchResultsInterface
      */
     public function getList(SearchCriteriaInterface $criteria);
 }

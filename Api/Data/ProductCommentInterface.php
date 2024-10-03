@@ -1,5 +1,5 @@
 <?php
-namespace Stackexchange\ProductComment\Api\Data;
+namespace SMG\RestApiProductComment\Api\Data;
 
 interface ProductCommentInterface
 {
@@ -49,56 +49,56 @@ interface ProductCommentInterface
     public function setCustomerId($customerId);
 
     /**
-     * Return the guest customer associated with comment
-     *
-     * @return int
-     */
-    public function getCustomerGuest();
-
-    /**
-     * Set the guest associated with comment
-     *
-     * @param int $productId
-     * @return $this
-     */
-    public function setCustomerGuest($value);
-
-    /**
-     * Return the Customer Email
-     *
-     * @return string
-     */
-    public function getCustomerEmail();
-
-    /**
-     * Set the Customer Email
-     *
-     * @param string $customerEmail
-     * @return $this
-     */
-    public function setCustomerEmail($customerEmail);
-
-    /**
      * Return the Customer Comments
      *
      * @return string
      */
-    public function getCustomerComments();
+    public function getComment();
 
     /**
-     * Set the Customer Comments
+     * Set Comment
      *
-     * @param string $customerComments
+     * @param string $comment
      * @return $this
      */
-    public function setCustomerComments($customerComments);
+    public function setComment($comment);
+
+    /**
+     * Return title
+     *
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * Set Title
+     *
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle($title);
+
+     /**
+     * Return status
+     *
+     * @return int
+     */
+    public function getStatus();
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return $this
+     */
+    public function setStatus($status);
 
     /**
      * Return the Date and Time of record added
      *
      * @return string
      */
-    public function getCreatedAt();
+    public function getCreationTime();
 
     /**
      * Set the Date and Time of record added
@@ -106,7 +106,22 @@ interface ProductCommentInterface
      * @param string $date
      * @return $this
      */
-    public function setCreatedAt($date);
+    public function setCreationTime($date);
+
+    /**
+     * Return the Date and Time of record update
+     *
+     * @return string
+     */
+    public function getUpdateTime();
+
+    /**
+     * Set the Date and Time of record update
+     *
+     * @param string $date
+     * @return $this
+     */
+    public function setUpdateTime($date);
 
 
 }

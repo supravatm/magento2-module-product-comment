@@ -3,10 +3,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Stackexchange\ProductComment\Block\Product;
+namespace SMG\RestApiProductComment\Block\Product;
 
 use \Magento\Catalog\Api\ProductRepositoryInterface;
-use \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\Collection as CommentCollection;
+use \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\Collection as CommentCollection;
 
 /**
  * Product Reviews Page
@@ -37,7 +37,7 @@ class View extends \Magento\Catalog\Block\Product\View
         \Magento\Customer\Model\Session $customerSession,
         ProductRepositoryInterface $productRepository,
         \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
-        \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
+        \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
         array $data = []
     ) {
         $this->_commentColFactory = $collectionFactory;

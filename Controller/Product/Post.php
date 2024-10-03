@@ -1,6 +1,6 @@
 <?php
 
-namespace Stackexchange\ProductComment\Controller\Product;
+namespace SMG\RestApiProductComment\Controller\Product;
 
 use Magento\Framework\Controller\ResultFactory;
 
@@ -21,28 +21,34 @@ class Post extends \Magento\Framework\App\Action\Action
      */
     private $modelRepository;
 
-    protected $customerSession;
+    protected $_customerSession;
     protected $resultRedirect;
+    protected $productCommentFactory;
+    protected $productCommentRepository;
+    protected $customerRepositoryInterface;
+
 
 
     /**
      * Index constructor.
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Stackexchange\ProductComment\Model\ModelFactory $modelFactory
-     * @param \Stackexchange\ProductComment\Model\ModelRepository $modelRepository
+     * @param \SMG\RestApiProductComment\Model\ModelFactory $modelFactory
+     * @param \SMG\RestApiProductComment\Model\ModelRepository $modelRepository
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Stackexchange\ProductComment\Model\ProductCommentFactory $productCommentFactory,
-        \Stackexchange\ProductComment\Model\ProductCommentRepository $productCommentRepository,
+        \SMG\RestApiProductComment\Model\ProductCommentFactory $productCommentFactory,
+        \SMG\RestApiProductComment\Model\ProductCommentRepository $productCommentRepository,
         \Magento\Customer\Model\Session $customerSession,
-        \Magento\Framework\Controller\Result\Redirect $resultRedirect
+        \Magento\Framework\Controller\Result\Redirect $resultRedirect,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepositoryInterface
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->productCommentFactory = $productCommentFactory;
         $this->productCommentRepository = $productCommentRepository;
+        $this->customerRepositoryInterface = $customerRepositoryInterface;
         $this->resultRedirect = $resultRedirect;
         $this->_customerSession = $customerSession;
         return parent::__construct($context);
@@ -59,27 +65,30 @@ class Post extends \Magento\Framework\App\Action\Action
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $data = $this->getRequest()->getPostValue();
         $productId = (int)$this->getRequest()->getParam('id');
+        $email = $this->getRequest()->getPost('email');
         try {
-        $data = [
-            "product_id" => $productId,
-            "customer_email" => $this->getRequest()->getPost('customer_email'),
-            "customer_comment" => $this->getRequest()->getPost('customer_comment')
-        ];
-
-        if($this->_customerSession->isLoggedIn()){
-            $data['customer_id'] =$this->_customerSession->getCustomer()->getId();
-            $data['customer_id'] = 0;
-        } else {
-            $data['customer_id'] = 0;
-            $data['customer_id'] = 1;
-        }
-
-        $obj = $this->productCommentFactory->create();
-        $this->productCommentRepository->save($obj->addData($data)); // Service Contract
+            $customer = $this->customerRepositoryInterface->get($email);
+            $data = [
+                "product_id" => $productId,
+                "customer_id" => $customer->getId() ?: 0,
+                "title" => $this->getRequest()->getPost('title'),
+                "comment" => $this->getRequest()->getPost('comment')
+            ];
+            $obj = $this->productCommentFactory->create();
+            $this->productCommentRepository->save($obj->addData($data)); // Service Contract
             $this->messageManager->addSuccess(__('You submitted your comment for moderation.'));
 
-        } catch (\Exception $e) {
-            $this->messageManager->addError(__('We can\'t write your comment right now.'));
+        } catch(\Magento\Framework\Exception\NoSuchEntityException $e) {
+            
+            $data = [
+                "product_id" => $productId,
+                "customer_id" => 0,
+                "title" => $this->getRequest()->getPost('title'),
+                "comment" => $this->getRequest()->getPost('comment')
+            ];
+            $obj = $this->productCommentFactory->create();
+            $this->productCommentRepository->save($obj->addData($data)); // Service Contract
+            $this->messageManager->addSuccess(__('You submitted your comment for moderation.'));
         }
         $resultRedirect->setUrl($this->_redirect->getRefererUrl());
         return $resultRedirect;

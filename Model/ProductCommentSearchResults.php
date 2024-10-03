@@ -1,9 +1,9 @@
 <?php
 
-namespace Stackexchange\ProductComment\Model;
+namespace SMG\RestApiProductComment\Model;
 
 use \Magento\Framework\Api\SearchResults;
-use \Stackexchange\ProductComment\Api\Data\ProductCommentSearchResultsInterface;
+use \SMG\RestApiProductComment\Api\Data\ProductCommentSearchResultsInterface;
 
 
 class ProductCommentSearchResults extends SearchResults implements ProductCommentSearchResultsInterface

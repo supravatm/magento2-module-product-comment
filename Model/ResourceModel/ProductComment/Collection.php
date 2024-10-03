@@ -1,13 +1,15 @@
 <?php
 
-namespace Stackexchange\ProductComment\Model\ResourceModel\ProductComment;
+namespace SMG\RestApiProductComment\Model\ResourceModel\ProductComment;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
     protected $_idFieldName = 'comment_id';
 
     protected function _construct()
     {
-        $this->_init('Stackexchange\ProductComment\Model\ProductComment', 'Stackexchange\ProductComment\Model\ResourceModel\ProductComment');
+        $this->_init(\SMG\RestApiProductComment\Model\ProductComment::class, \SMG\RestApiProductComment\Model\ResourceModel\ProductComment::class);
     }
 }

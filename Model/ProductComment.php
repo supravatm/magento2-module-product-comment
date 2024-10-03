@@ -1,13 +1,12 @@
 <?php
 
-    namespace Stackexchange\ProductComment\Model;
+namespace SMG\RestApiProductComment\Model;
 
-use Stackexchange\ProductComment\Api\Data\ProductCommentInterface;
+use Magento\Framework\Model\AbstractModel;
+use SMG\RestApiProductComment\Api\Data\ProductCommentInterface;
 
-class ProductComment extends \Magento\Framework\Model\AbstractModel implements
-    \Stackexchange\ProductComment\Api\Data\ProductCommentInterface
+class ProductComment extends AbstractModel implements ProductCommentInterface
 {
-
     /**
      * Cache tag
      */
@@ -15,7 +14,7 @@ class ProductComment extends \Magento\Framework\Model\AbstractModel implements
 
     protected function _construct()
     {
-        $this->_init('Stackexchange\ProductComment\Model\ResourceModel\ProductComment');
+        $this->_init(ResourceModel\ProductComment::class);
     }
 
     /**
@@ -23,7 +22,7 @@ class ProductComment extends \Magento\Framework\Model\AbstractModel implements
      */
     public function getCommentId()
     {
-        return $this->_getData('comment_id');
+        return $this->getData('comment_id');
     }
 
     /**
@@ -39,7 +38,7 @@ class ProductComment extends \Magento\Framework\Model\AbstractModel implements
      */
     public function getProductId()
     {
-        return $this->_getData('product_id');
+        return $this->getData('product_id');
     }
 
     /**
@@ -53,25 +52,9 @@ class ProductComment extends \Magento\Framework\Model\AbstractModel implements
     /**
      * @inheritdoc
      */
-    public function getCustomerEmail()
-    {
-        return $this->_getData('customer_email');
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setCustomerEmail($customerEmail)
-    {
-        $this->setData('customer_email', $customerEmail);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getCustomerId()
     {
-        return $this->_getData('customer_id');
+        return $this->getData('customer_id');
     }
 
     /**
@@ -81,50 +64,85 @@ class ProductComment extends \Magento\Framework\Model\AbstractModel implements
     {
         $this->setData('customer_id', $customerId);
     }
+
     /**
      * @inheritdoc
      */
-    public function getCustomerGuest()
+    public function getTitle()
     {
-        return $this->_getData('customer_guest');
+        return $this->getData('title');
     }
 
     /**
      * @inheritdoc
      */
-    public function setCustomerGuest($customerguest)
+    public function setTitle($title)
     {
-        $this->setData('customer_guest', $customerguest);
-    }
-    /**
-     * @inheritdoc
-     */
-    public function getCustomerComments()
-    {
-        return $this->_getData('customer_comments');
+        $this->setData('title', $title);
     }
 
     /**
      * @inheritdoc
      */
-    public function setCustomerComments($customerComments)
+    public function getStatus()
     {
-        $this->setData('customer_comments', $customerComments);
+        return $this->getData('status');
     }
 
     /**
      * @inheritdoc
      */
-    public function getCreatedAt()
+    public function setStatus($status)
     {
-        return $this->_getData('created_at');
+        $this->setData('status', $status);
     }
 
     /**
      * @inheritdoc
      */
-    public function setCreatedAt($date)
+    public function getComment()
     {
-        $this->setData('created_at', $date);
+        return $this->getData('comment');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setComment($comment)
+    {
+        $this->setData('comment', $comment);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getCreationTime()
+    {
+        return $this->getData('creation_time');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setCreationTime($date)
+    {
+        $this->setData('creation_time', $date);
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function getUpdateTime()
+    {
+        return $this->getData('creation_time');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setUpdateTime($date)
+    {
+        $this->setData('update_time', $date);
     }
 }

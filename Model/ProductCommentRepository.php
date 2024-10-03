@@ -1,15 +1,15 @@
 <?php
 
-namespace Stackexchange\ProductComment\Model;
+namespace SMG\RestApiProductComment\Model;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Stackexchange\ProductComment\Api\Data\ProductCommentInterface;
-use Stackexchange\ProductComment\Model\ResourceModel\ProductComment as ObjectResourceModel;
+use \SMG\RestApiProductComment\Api\Data\ProductCommentInterface;
+use SMG\RestApiProductComment\Model\ResourceModel\ProductComment as ObjectResourceModel;
 
-class ProductCommentRepository implements \Stackexchange\ProductComment\Api\ProductCommentRepositoryInterface
+class ProductCommentRepository implements \SMG\RestApiProductComment\Api\ProductCommentRepositoryInterface
 {
     protected $objectFactory;
 
@@ -20,9 +20,9 @@ class ProductCommentRepository implements \Stackexchange\ProductComment\Api\Prod
     protected $searchResultsFactory;
 
     public function __construct(
-        \Stackexchange\ProductComment\Model\ProductCommentFactory $objectFactory,
+        \SMG\RestApiProductComment\Model\ProductCommentFactory $objectFactory,
         ObjectResourceModel $objectResourceModel,
-        \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
+        \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
         \Magento\Framework\Api\SearchResultsInterfaceFactory $searchResultsFactory
     )
     {
@@ -32,15 +32,10 @@ class ProductCommentRepository implements \Stackexchange\ProductComment\Api\Prod
         $this->searchResultsFactory = $searchResultsFactory;
     }
 
-    public function save(ProductCommentInterface $object)
+    public function save(ProductCommentInterface $comment)
     {
-        $object->setCustomerGuest(1);
-        try {
-            $this->objectResourceModel->save($object);
-        } catch (\Exception $e) {
-            throw new CouldNotSaveException(__($e->getMessage()));
-        }
-        return $object;
+        $this->objectResourceModel->save($comment);
+        return $comment;
     }
 
     public function deleteById($id)
@@ -76,8 +71,6 @@ class ProductCommentRepository implements \Stackexchange\ProductComment\Api\Prod
      */
     public function getList(SearchCriteriaInterface $criteria)
     {
-
-
         $searchResults = $this->searchResultsFactory->create();
 
         $searchResults->setSearchCriteria($criteria);
@@ -94,7 +87,6 @@ class ProductCommentRepository implements \Stackexchange\ProductComment\Api\Prod
                 $collection->addFieldToFilter($fields, $conditions);
             }
         }
-
         //\Zend_Debug::dump($fields); die;
         $searchResults->setTotalCount($collection->getSize());
         $sortOrders = $criteria->getSortOrders();

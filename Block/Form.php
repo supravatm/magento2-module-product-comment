@@ -1,10 +1,5 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-namespace Stackexchange\ProductComment\Block;
+namespace SMG\RestApiProductComment\Block;
 
 use Magento\Customer\Model\Context;
 use Magento\Customer\Model\Url;

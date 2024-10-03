@@ -1,11 +1,6 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 \Magento\Framework\Component\ComponentRegistrar::register(
-    \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Stackexchange_ProductComment',
-    __DIR__
+	\Magento\Framework\Component\ComponentRegistrar::MODULE,
+	'SMG_RestApiProductComment',
+	__DIR__
 );

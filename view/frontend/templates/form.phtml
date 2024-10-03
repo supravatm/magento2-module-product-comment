@@ -19,7 +19,8 @@
             <fieldset class="fieldset comment-fieldset"
                       data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
                 <legend class="legend comment-legend">
-                    <span><?= $block->escapeHtml(__("You're commenting:")) ?></span><strong><?= $block->escapeHtml($block->getProductInfo()->getName()) ?></strong>
+                    
+                    <span><?= $block->escapeHtml(__("You're commenting:")) ?></span><strong><?= $block->escapeHtml(__("%1  - %2", $block->getProductInfo()->getName(), $block->getProductInfo()->getSku())) ?></strong>
                 </legend>
                 <br/>
 
@@ -30,6 +31,12 @@
                         <input type="text" name="email" id="email_field" class="input-email"
                                data-validate="{required:true}" />
                     </div>
+                </div>
+                <div class="field comment-field-text required">
+                    <label for="title_field" class="label"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+                    <div class="control">
+                    <input type="text" name="title" id="title_field" class="input-title"
+                               data-validate="{required:true}" />
                 </div>
                 <div class="field comment-field-text required">
                     <label for="comment_field" class="label"><span><?= $block->escapeHtml(__('Comment')) ?></span></label>

@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Stackexchange\ProductComment\Block\Product\View;
+namespace SMG\RestApiProductComment\Block\Catalog\Product;
 
 /**
  * Detailed Product Reviews
@@ -11,7 +11,7 @@ namespace Stackexchange\ProductComment\Block\Product\View;
  * @api
  * @since 100.0.2
  */
-class ListView extends \Stackexchange\ProductComment\Block\Product\View
+class View extends \SMG\RestApiProductComment\Block\Product\View
 {
     /**
      * Unused class property

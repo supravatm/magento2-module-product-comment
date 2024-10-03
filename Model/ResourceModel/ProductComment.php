@@ -1,13 +1,15 @@
 <?php
 
-namespace Stackexchange\ProductComment\Model\ResourceModel;
+namespace SMG\RestApiProductComment\Model\ResourceModel;
 
-class ProductComment extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class ProductComment extends AbstractDb
 {
     protected $_idFieldName = 'comment_id';
 
     protected function _construct()
     {
-        $this->_init('product_comment','comment_id');
+        $this->_init('smg_product_comment','comment_id');
     }
 }

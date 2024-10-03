@@ -4,12 +4,20 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Stackexchange_ProductComment::main" title="Product Comment" sortOrder="999">
-                    <resource id="Stackexchange_ProductComment::webservice" title="API" sortOrder="10"/>
-                    <resource id="Stackexchange_ProductComment::comment_all" title="Comment Grid" translate="title" sortOrder="10"/>
-                    <resource id="Stackexchange_ProductComment::save" title="Comment save" translate="title" sortOrder="20"/>
-                    <resource id="Stackexchange_ProductComment::update" title="Comment update" translate="title" sortOrder="20"/>
-                    <resource id="Stackexchange_ProductComment::add" title="Comment add" translate="title" sortOrder="20"/>
+                <resource id="SMG_RestApiProductComment::productcomment" title="Product Comment" sortOrder="999">
+                    <resource id="SMG_RestApiProductComment::backend" title="Comments" translate="title" sortOrder="10">
+                        <resource id="SMG_RestApiProductComment::backend_view" title="View comment" translate="title" sortOrder="10" />
+                        <resource id="SMG_RestApiProductComment::backend_edit" title="edit comment" translate="title" sortOrder="20" />
+                        <resource id="SMG_RestApiProductComment::backend_approver" title="approver comment" translate="title" sortOrder="30" />
+                    </resource>
+                    <resource id="SMG_RestApiProductComment::comment_restapi" title="REST API" translate="title" sortOrder="20">
+                        <resource id="SMG_RestApiProductComment::restapi_view" title="REST API View" translate="title" sortOrder="10" />
+                        <resource id="SMG_RestApiProductComment::restapi_edit" title="REST API Edit" translate="title" sortOrder="20" />
+                        <resource id="SMG_RestApiProductComment::restapi_approver" title="REST API approver" translate="title" sortOrder="30" />
+                    </resource>
+                    <resource id="SMG_RestApiProductComment::comment_system_config" title="Configuration" translate="title" sortOrder="30">
+                        <resource id="SMG_RestApiProductComment::system_config" title="Module Configuration" translate="title" sortOrder="10" />
+                    </resource>
                 </resource>
             </resource>
         </resources>

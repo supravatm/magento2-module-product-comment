@@ -1,19 +1,12 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-namespace Stackexchange\ProductComment\Block\Product;
+
+namespace SMG\RestApiProductComment\Block\Product;
 
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\Template;
 
 /**
  * Product Review Tab
- *
- * @api
- * @author     Magento Core Team <core@magentocommerce.com>
- * @since 100.0.2
  */
 class Comment extends Template implements IdentityInterface
 {
@@ -27,20 +20,20 @@ class Comment extends Template implements IdentityInterface
     /**
      * Review resource model
      *
-     * @var \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\CollectionFactory
+     * @var \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\CollectionFactory
      */
     protected $_commentColFactory;
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\CollectionFactory
+     * @param \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\CollectionFactory
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
-        \Stackexchange\ProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
+        \SMG\RestApiProductComment\Model\ResourceModel\ProductComment\CollectionFactory $collectionFactory,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
@@ -111,6 +104,6 @@ class Comment extends Template implements IdentityInterface
      */
     public function getIdentities()
     {
-        return [\Stackexchange\ProductComment\Model\ProductComment::CACHE_TAG];
+        return [\SMG\RestApiProductComment\Model\ProductComment::CACHE_TAG];
     }
 }
